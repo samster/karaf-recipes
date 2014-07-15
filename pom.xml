@@ -112,8 +112,8 @@
     <modules>
         <module>svc</module>
         <module>rest</module>
-        <module>distro</module>
         <module>app</module>
+        <module>distro</module>
     </modules>
 
 </project>
