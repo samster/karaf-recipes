@@ -1,0 +1,8 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <bean id="karafSvcBean" class="com.samstercode.karafrecipes.svc.impl.KarafSvcImpl"/>
+
+    <service id="karafService" ref="karafSvcBean"
+             interface="com.samstercode.karafrecipes.svc.KarafSvc"/>
+
+</blueprint>
