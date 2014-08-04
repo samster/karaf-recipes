@@ -14,4 +14,4 @@ Basic recipes for a Karaf project.  Includes an example of a OSGI service, REST 
 
 * REST URL is at http://localhost:8181/cxf/rest
 * UI URL is http://localhost:8181/ui
-  ** Uses linemanjs.  To run in standalone developer mode, run "mvn lineman:run" on command line and access at URL http://localhost:8000/ui
+..* Uses linemanjs.  To run in standalone developer mode, run "mvn lineman:run" on command line and access at URL http://localhost:8000/ui
