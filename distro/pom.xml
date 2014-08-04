@@ -56,6 +56,7 @@
                         <feature>management</feature>
                         <feature>webconsole</feature>
                         <feature>cxf-rs-security-cors</feature>
+                        <feature>war</feature>
                         <feature>karaf-app</feature>
                     </bootFeatures>
                     <!-- no installedFeatures -->

@@ -18,6 +18,8 @@
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
         <maven.bundle.plugin.version>2.5.0</maven.bundle.plugin.version>
         <features.maven.plugin.version>2.3.5</features.maven.plugin.version>
+        <maven.resources.plugin.version>2.6</maven.resources.plugin.version>
+        <lineman.maven.plugin.version>1.7</lineman.maven.plugin.version>
     </properties>
 
     <organization>
@@ -93,6 +95,16 @@
                     <artifactId>features-maven-plugin</artifactId>
                     <version>${features.maven.plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven.resources.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.maxxkrakoa.lineman-maven-plugin</groupId>
+                    <artifactId>lineman-maven-plugin</artifactId>
+                    <version>${lineman.maven.plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -112,6 +124,7 @@
     <modules>
         <module>svc</module>
         <module>rest</module>
+        <module>ui</module>
         <module>app</module>
         <module>distro</module>
     </modules>

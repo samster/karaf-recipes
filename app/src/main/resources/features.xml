@@ -18,8 +18,10 @@ of what is needed for this app.
     <feature name="karaf-app" version="${project.version}">
         <feature>cxf-rs-security-cors</feature>
         <feature>karaf-app-thirdparty-libs</feature>
-        <bundle>mvn:com.samstercode.karafrecipes/karaf-svc/${project.version}</bundle>
-        <bundle>mvn:com.samstercode.karafrecipes/karaf-rest/${project.version}</bundle>
+        <feature>war</feature>
+        <bundle start-level='95'>mvn:com.samstercode.karafrecipes/karaf-svc/${project.version}</bundle>
+        <bundle start-level='95'>mvn:com.samstercode.karafrecipes/karaf-rest/${project.version}</bundle>
+        <bundle start-level='95'>mvn:com.samstercode.karafrecipes/karaf-ui/${project.version}/war</bundle>
     </feature>
 
 </features>
