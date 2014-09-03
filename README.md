@@ -1,7 +1,6 @@
 karaf-recipes
 =============
-* IMPORTANT:  Currently, project fails at runtime when trying to reference wrapped bundle inside features.xml (inside KAR)
-* Basic recipes for a Karaf project.  Includes an example of a OSGI service, REST service, ui, kar app, and distribution
+* Basic recipes for a Karaf project for Karaf 2.3.2.  Includes an example of a OSGI service, REST service, ui, kar app, and distribution
 
 ### How do I get set up? ###
 
@@ -18,7 +17,8 @@ karaf-recipes
 
 ### Notes ###
 
-* Using Nexus repository manager, needed to add additional repository
+* Using Nexus repository manager, needed to add additional repositories
+
     * Repository ID: servicemix
     * Repository Name: (Added) Apache ServiceMix Repository
     * Repository Type: proxy
@@ -26,4 +26,13 @@ karaf-recipes
     * Repository Format: maven2
     * Contained in groups: Public Repositories
     * Remote URL: http://svn.apache.org/repos/asf/servicemix/m2-repo/
+
+    * Repository ID: com.springsource.repository.bundles.external
+    * Repository Name: (Added) EBR External Release Repository
+    * Repository Type: proxy
+    * Repository Policy: Release
+    * Repository Format: maven2
+    * Contained in groups:
+    * Remote URL: http://repository.springsource.com/maven/bundles/external/
+
 

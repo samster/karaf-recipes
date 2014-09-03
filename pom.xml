@@ -11,15 +11,20 @@
     <url>http://www.samstercode.com</url>
 
     <properties>
-        <karaf.version>3.0.1</karaf.version>
+        <karaf.version>2.3.2</karaf.version>
         <cxf.version>2.7.6</cxf.version>
         <java.version>1.7</java.version>
         <slf4j.version>1.7.7</slf4j.version>
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
         <maven.bundle.plugin.version>2.5.0</maven.bundle.plugin.version>
-        <features.maven.plugin.version>2.3.5</features.maven.plugin.version>
+        <features.maven.plugin.version>2.3.2</features.maven.plugin.version>
         <maven.resources.plugin.version>2.6</maven.resources.plugin.version>
         <lineman.maven.plugin.version>1.7</lineman.maven.plugin.version>
+        <build.helper.maven.plugin.version>1.8</build.helper.maven.plugin.version>
+        <maven.assembly.plugin.version>2.4.1</maven.assembly.plugin.version>
+        <maven.dependency.plugin.version>2.8</maven.dependency.plugin.version>
+        <activemq.karaf.version>5.7.0</activemq.karaf.version>
+        <apache.camel.version>2.11.1</apache.camel.version>
     </properties>
 
     <organization>
@@ -47,6 +52,19 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.karaf</groupId>
+                <artifactId>apache-karaf</artifactId>
+                <type>tar.gz</type>
+                <version>${karaf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.karaf.assemblies.features</groupId>
+                <artifactId>standard</artifactId>
+                <type>xml</type>
+                <classifier>features</classifier>
+                <version>${karaf.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.karaf.features</groupId>
                 <artifactId>framework</artifactId>
@@ -104,6 +122,21 @@
                     <groupId>com.github.maxxkrakoa.lineman-maven-plugin</groupId>
                     <artifactId>lineman-maven-plugin</artifactId>
                     <version>${lineman.maven.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build.helper.maven.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven.assembly.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven.dependency.plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

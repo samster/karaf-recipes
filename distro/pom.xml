@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -9,58 +10,151 @@
     </parent>
 
     <artifactId>karaf-distro</artifactId>
-    <packaging>karaf-assembly</packaging>
     <name>KARAF RECIPES :: DISTRO</name>
     <description>Karaf Recipes Distribution</description>
 
+    <properties>
+        <distribution.file.name>${project.artifactId}-${project.version}</distribution.file.name>
+        <setup.folder>target/dependencies</setup.folder>
+    </properties>
+
     <dependencies>
         <dependency>
-            <!-- scope is compile so all features (there is only one) are installed into startup.properties and the feature repo itself is not installed -->
-            <groupId>org.apache.karaf.features</groupId>
-            <artifactId>framework</artifactId>
-            <type>kar</type>
+            <groupId>org.apache.karaf</groupId>
+            <artifactId>apache-karaf</artifactId>
+            <type>tar.gz</type>
         </dependency>
         <dependency>
-            <!-- scope is runtime so the feature repo is listed in the features service config file, and features may be installed using the karaf-maven-plugin configuration -->
-            <groupId>org.apache.karaf.features</groupId>
+            <groupId>org.apache.karaf.assemblies.features</groupId>
             <artifactId>standard</artifactId>
-            <classifier>features</classifier>
             <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf.karaf</groupId>
-            <artifactId>apache-cxf</artifactId>
             <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-       </dependency>
-        <dependency>
-            <groupId>com.samstercode.karafrecipes</groupId>
-            <artifactId>karaf-app</artifactId>
-            <version>${project.version}</version>
-            <type>kar</type>
         </dependency>
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/filtered-resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>filter</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.karaf.tooling</groupId>
-                <artifactId>karaf-maven-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <!-- no startupFeatures -->
-                    <bootFeatures>
-                        <feature>standard</feature>
-                        <feature>management</feature>
-                        <feature>webconsole</feature>
-                        <feature>cxf-rs-security-cors</feature>
-                        <feature>war</feature>
-                        <feature>karaf-app</feature>
-                    </bootFeatures>
-                    <!-- no installedFeatures -->
-                </configuration>
+                <artifactId>features-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-features-to-repo</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>add-features-to-repo</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>
+                                    mvn:org.apache.camel.karaf/apache-camel/${apache.camel.version}/xml/features
+                                </descriptor>
+                                <descriptor>
+                                    mvn:org.apache.activemq/activemq-karaf/${activemq.karaf.version}/xml/features
+                                </descriptor>
+                                <descriptor>
+                                    mvn:org.apache.karaf.assemblies.features/standard/${karaf.version}/xml/features
+                                </descriptor>
+                                <descriptor>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</descriptor>
+                                <descriptor>file:${basedir}/target/classes/${project.artifactId}-features.xml
+                                </descriptor>
+                            </descriptors>
+                            <repository>${setup.folder}/apache-karaf-${karaf.version}/system</repository>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.karaf</groupId>
+                                    <artifactId>apache-karaf</artifactId>
+                                    <version>${karaf.version}</version>
+                                    <type>tar.gz</type>
+                                    <outputDirectory>${setup.folder}</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>bin</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <archiverConfig>
+                                <duplicateBehavior>add</duplicateBehavior>
+                            </archiverConfig>
+                            <descriptors>
+                                <descriptor>src/main/descriptors/bin.xml</descriptor>
+                            </descriptors>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>${distribution.file.name}</finalName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-artifacts</id>
+                        <phase>package</phase>
+                        <inherited>false</inherited>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>target/classes/${project.artifactId}-features.xml</file>
+                                    <type>xml</type>
+                                    <classifier>features</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
