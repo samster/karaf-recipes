@@ -1,7 +1,8 @@
 karaf-recipes
 =============
 * IMPORTANT:  Currently, project fails at runtime when trying to reference wrapped bundle inside features.xml (inside KAR)
-* Basic recipes for a Karaf project.  Includes an example of a OSGI service, REST service, ui, kar app, and distribution
+* See http://karaf.922171.n3.nabble.com/Karaf-3-0-1-Wrap-Bundle-Inside-Feature-td4035044.html
+* Basic recipes for a Karaf project for Karaf 3.0.1.  Includes an example of a OSGI service, REST service, ui, kar app, and distribution
 
 ### How do I get set up? ###
 
