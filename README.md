@@ -18,7 +18,7 @@ karaf-recipes
 ### Notes ###
 
 * Using Nexus repository manager, needed to add additional repositories
-
+  * ServiceMix
     * Repository ID: servicemix
     * Repository Name: (Added) Apache ServiceMix Repository
     * Repository Type: proxy
@@ -26,7 +26,7 @@ karaf-recipes
     * Repository Format: maven2
     * Contained in groups: Public Repositories
     * Remote URL: http://svn.apache.org/repos/asf/servicemix/m2-repo/
-
+  * SpringSource External Release 
     * Repository ID: com.springsource.repository.bundles.external
     * Repository Name: (Added) EBR External Release Repository
     * Repository Type: proxy
