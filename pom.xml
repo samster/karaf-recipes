@@ -25,6 +25,8 @@
         <maven.dependency.plugin.version>2.8</maven.dependency.plugin.version>
         <activemq.karaf.version>5.7.0</activemq.karaf.version>
         <apache.camel.version>2.11.1</apache.camel.version>
+        <commons.io.version>2.4</commons.io.version>
+        <org.apache.servicemix.bundles.swagger-jaxrs.version>1.3.5_1</org.apache.servicemix.bundles.swagger-jaxrs.version>
     </properties>
 
     <organization>
@@ -92,6 +94,16 @@
                 <artifactId>cxf-rt-rs-security-cors</artifactId>
                 <version>${cxf.version}</version>
             </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.servicemix.bundles</groupId>
+                <artifactId>org.apache.servicemix.bundles.swagger-jaxrs</artifactId>
+                <version>${org.apache.servicemix.bundles.swagger-jaxrs.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -158,6 +170,7 @@
         <module>svc</module>
         <module>rest</module>
         <module>ui</module>
+        <module>api-docs</module>
         <module>app</module>
         <module>distro</module>
     </modules>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="karaf-distro-${project.version}">
+
+    <repository>mvn:com.samstercode.karafrecipes/karaf-app/${project.version}/xml/features</repository>
+    <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
+
+    <feature name="distro" version="${project.version}">
+        <feature>karaf-app</feature>
+    </feature>
+
+</features>

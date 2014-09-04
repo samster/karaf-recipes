@@ -1,6 +1,6 @@
 karaf-recipes
 =============
-* Basic recipes for a Karaf project for Karaf 2.3.2.  Includes an example of a OSGI service, REST service, ui, kar app, and distribution
+* Basic recipes for a Karaf project for Karaf 2.3.2.  Includes an example of a OSGI service, REST service, ui, kar app, Swagger documentation for REST and distribution
 
 ### How do I get set up? ###
 
@@ -14,6 +14,9 @@ karaf-recipes
 * REST URL is at http://localhost:8181/cxf/rest
 * UI URL is http://localhost:8181/ui
     * Uses linemanjs.  To run in standalone developer mode, run "mvn lineman:run" on   command line and access at URL http://localhost:8000/ui
+* UI for Swagger REST documentation
+    * http://localhost:8181/api-docs
+    * http://localhost:8181/api/karaf-rest/hellos/api-html
 
 ### Notes ###
 

@@ -25,6 +25,14 @@
             <artifactId>karaf-svc</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.swagger-jaxrs</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -43,10 +51,36 @@
                             javax.ws.rs,
                             javax.ws.rs.core,
                             org.apache.cxf.rs.security.cors,
-                            com.samstercode.karafrecipes.svc
+                            com.samstercode.karafrecipes.svc,
+                            org.apache.commons.io
                         </Import-Package>
                     </instructions>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.kongchen</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <configuration>
+                    <apiSources>
+                        <apiSource>
+                            <locations>com.samstercode.karafrecipes.rest</locations>
+                            <apiVersion>v1</apiVersion>
+                            <basePath>http://localhost:8181/api/karaf-rest</basePath>
+                            <outputTemplate>${project.basedir}/src/main/resources/strapdown.html.mustache
+                            </outputTemplate>
+                            <outputPath>${project.basedir}/src/main/resources/generated/strapdown.html</outputPath>
+                            <swaggerDirectory>${project.basedir}/src/main/resources/generated/apidocs</swaggerDirectory>
+                        </apiSource>
+                    </apiSources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

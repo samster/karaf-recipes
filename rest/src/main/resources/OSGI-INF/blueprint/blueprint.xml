@@ -3,7 +3,7 @@
            xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs"
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd">
 
-    <jaxrs:server id="rest" address="/rest">
+    <jaxrs:server id="rest" address="/karaf-rest">
         <jaxrs:serviceBeans>
             <ref component-id="restSvc"/>
         </jaxrs:serviceBeans>
@@ -15,9 +15,9 @@
 
     <reference-list id="karafSvcRef" interface="com.samstercode.karafrecipes.svc.KarafSvc">
         <reference-listener
-            ref="restSvc"
-            bind-method="bind"
-            unbind-method="unbind"/>
+                ref="restSvc"
+                bind-method="bind"
+                unbind-method="unbind"/>
     </reference-list>
 
 </blueprint>
