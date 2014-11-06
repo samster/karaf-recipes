@@ -6,6 +6,7 @@ angular.module("app").controller('LoginController', function($scope, $location, 
   };
 
   $scope.login = function() {
-    AuthenticationService.login($scope.credentials).success(onLoginSuccess);
+    //AuthenticationService.login($scope.credentials).success(onLoginSuccess);
+    onLoginSuccess();
   };
 });

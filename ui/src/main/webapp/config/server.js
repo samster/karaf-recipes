@@ -29,5 +29,11 @@ module.exports = {
         {title: 'Treasure Island', author: 'Stephenson'}
       ]);
     });
+
+    app.get('/cxf/rest', function (req, res) {
+          res.json(
+            {message: 'Hello World from LinemanJS mock response'}
+          );
+        });
   }
 };

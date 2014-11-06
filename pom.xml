@@ -11,13 +11,11 @@
     <url>http://www.samstercode.com</url>
 
     <properties>
-        <karaf.version>3.0.1</karaf.version>
-        <cxf.version>2.7.6</cxf.version>
+        <karaf.version>3.0.2</karaf.version>
+        <cxf.version>3.0.2</cxf.version>
         <java.version>1.7</java.version>
-        <slf4j.version>1.7.7</slf4j.version>
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
-        <maven.bundle.plugin.version>2.5.0</maven.bundle.plugin.version>
-        <features.maven.plugin.version>2.3.5</features.maven.plugin.version>
+        <maven.bundle.plugin.version>2.5.3</maven.bundle.plugin.version>
         <maven.resources.plugin.version>2.6</maven.resources.plugin.version>
         <lineman.maven.plugin.version>1.7</lineman.maven.plugin.version>
     </properties>
@@ -34,15 +32,18 @@
         </developer>
     </developers>
 
+    <repositories>
+        <repository>
+            <id>servicemix</id>
+            <name>Apache ServiceMix Repository</name>
+            <url>http://svn.apache.org/repos/asf/servicemix/m2-repo/</url>
+        </repository>
+    </repositories>
+
     <distributionManagement>
     </distributionManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -59,15 +60,20 @@
                 <version>${karaf.version}</version>
                 <classifier>features</classifier>
                 <type>xml</type>
-                <scope>runtime</scope>
             </dependency>
             <dependency>
-                <groupId>org.apache.cxf.karaf</groupId>
-                <artifactId>apache-cxf</artifactId>
-                <version>${cxf.version}</version>
+                <groupId>org.apache.karaf.features</groupId>
+                <artifactId>spring</artifactId>
+                <version>${karaf.version}</version>
                 <classifier>features</classifier>
                 <type>xml</type>
-                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.karaf.features</groupId>
+                <artifactId>enterprise</artifactId>
+                <version>${karaf.version}</version>
+                <classifier>features</classifier>
+                <type>xml</type>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
@@ -89,11 +95,6 @@
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
                     <version>${maven.bundle.plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.karaf.tooling</groupId>
-                    <artifactId>features-maven-plugin</artifactId>
-                    <version>${features.maven.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

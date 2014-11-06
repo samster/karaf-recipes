@@ -2,6 +2,7 @@
 <html ng-app="app">
   <head>
     <title><%= pkg.name %></title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
     <link rel="stylesheet" type="text/css" href="css/app.css" media="all" />
   </head>
 
