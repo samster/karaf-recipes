@@ -1,6 +1,6 @@
 karaf-recipes
 =============
-* Basic recipes for a Karaf project for Karaf 3.0.2.  Includes an example of a OSGI service, REST service, ui, kar app, and distribution
+* Basic recipes for a Karaf project for Karaf 3.0.3.  Includes an example of a OSGI service, REST service, ui, kar app, and distribution
 
 ### How do I get set up? ###
 
