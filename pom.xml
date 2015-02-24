@@ -16,7 +16,7 @@
         <java.version>1.7</java.version>
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
         <maven.bundle.plugin.version>2.5.3</maven.bundle.plugin.version>
-        <maven.resources.plugin.version>2.6</maven.resources.plugin.version>
+        <maven.resources.plugin.version>2.7</maven.resources.plugin.version>
         <lineman.maven.plugin.version>1.7</lineman.maven.plugin.version>
     </properties>
 
@@ -126,6 +126,7 @@
         <module>svc</module>
         <module>rest</module>
         <module>ui</module>
+        <module>feature</module>
         <module>app</module>
         <module>distro</module>
     </modules>

@@ -9,9 +9,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>karaf-app</artifactId>
-    <packaging>kar</packaging>
-    <name>KARAF RECIPES :: APP</name>
+    <artifactId>karaf-feature</artifactId>
+    <packaging>feature</packaging>
+    <name>KARAF RECIPES :: FEATURE</name>
 
     <dependencies>
 
@@ -48,24 +48,10 @@
                 <groupId>org.apache.karaf.tooling</groupId>
                 <artifactId>karaf-maven-plugin</artifactId>
                 <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <id>features-create-features-file</id>
-                        <goals>
-                            <goal>features-generate-descriptor</goal>
-                        </goals>
-                        <configuration>
-                            <startLevel>80</startLevel>
-                            <aggregateFeatures>false</aggregateFeatures>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>features-create-kar</id>
-                        <goals>
-                            <goal>features-create-kar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <configuration>
+                    <startLevel>80</startLevel>
+                    <aggregateFeatures>true</aggregateFeatures>
+                </configuration>
             </plugin>
         </plugins>
     </build>

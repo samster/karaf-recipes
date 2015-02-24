@@ -16,6 +16,7 @@
 
     <properties>
         <appendedResourcesDirectory>${basedir}/../etc/appended-resources</appendedResourcesDirectory>
+        <archive>${project.build.directory}/karaf-distro-1.0.0-SNAPSHOT.tar.gz</archive>
     </properties>
 
     <dependencies>
@@ -33,23 +34,25 @@
         </dependency>
         <dependency>
             <groupId>org.apache.karaf.features</groupId>
-            <artifactId>spring</artifactId>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.karaf.features</groupId>
             <artifactId>enterprise</artifactId>
             <classifier>features</classifier>
             <type>xml</type>
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>spring</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>com.samstercode.karafrecipes</groupId>
-            <artifactId>karaf-app</artifactId>
+            <artifactId>karaf-feature</artifactId>
             <version>${project.version}</version>
-            <type>kar</type>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf.karaf</groupId>
@@ -64,47 +67,14 @@
     <build>
         <resources>
             <resource>
-                <directory>${project.basedir}/../..</directory>
+                <directory>${project.basedir}/src/main/resources</directory>
                 <filtering>false</filtering>
                 <includes>
-                    <include>README</include>
-                    <include>RELEASE*</include>
-                    <include>LICENSE</include>
-                    <include>NOTICE</include>
+                    <include>**/*</include>
                 </includes>
-            </resource>
-            <resource>
-                <directory>${project.build.directory}/demos</directory>
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>**/*.i??</exclude>
-                    <exclude>**/.target</exclude>
-                    <exclude>**/.classpath</exclude>
-                </excludes>
             </resource>
         </resources>
         <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>process-resources</id>
-                        <goals>
-                            <goal>resources</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-remote-resources-plugin</artifactId>
-                <version>1.5</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.karaf.tooling</groupId>
                 <artifactId>karaf-maven-plugin</artifactId>
@@ -116,29 +86,42 @@
                             <goal>install-kars</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>package</id>
-                        <goals>
-                            <goal>instance-create-archive</goal>
-                        </goals>
-                    </execution>
                 </executions>
                 <configuration>
                     <installedFeatures>
-                        <feature>wrapper</feature>
-                    </installedFeatures>
-                    <bootFeatures>
-                        <feature>standard</feature>
-                        <feature>management</feature>
-                        <feature>ssh</feature>
                         <feature>config</feature>
+                        <feature>standard</feature>
                         <feature>region</feature>
                         <feature>package</feature>
+                        <feature>kar</feature>
+                        <feature>ssh</feature>
+                        <feature>management</feature>
+                    </installedFeatures>
+                    <bootFeatures>
                         <feature>war</feature>
                         <feature>cxf-rs-security-cors</feature>
-                        <feature>kar</feature>
+                        <feature>karaf-feature</feature>
                     </bootFeatures>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2 </version>
+                <executions>
+                    <execution>
+                        <id>bin</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/descriptors/bin.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
