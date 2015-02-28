@@ -14,32 +14,27 @@
     <name>KARAF RECIPES :: FEATURE</name>
 
     <dependencies>
-
         <dependency>
             <groupId>com.samstercode.karafrecipes</groupId>
             <artifactId>karaf-svc</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.samstercode.karafrecipes</groupId>
             <artifactId>karaf-rest</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.samstercode.karafrecipes</groupId>
             <artifactId>karaf-rest-two</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.samstercode.karafrecipes</groupId>
             <artifactId>karaf-ui</artifactId>
             <type>war</type>
             <version>${project.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -50,7 +45,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <startLevel>80</startLevel>
-                    <aggregateFeatures>true</aggregateFeatures>
+                    <aggregateFeatures>false</aggregateFeatures>
                 </configuration>
             </plugin>
         </plugins>

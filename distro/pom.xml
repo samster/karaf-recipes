@@ -99,12 +99,9 @@
                     <bootFeatures>
                         <feature>webconsole</feature>
                         <feature>war</feature>
-                      <!--  <feature>cxf</feature>
+                        <feature>cxf</feature>
                         <feature>cxf-rs-security-cors</feature>
-                        <feature>karaf-feature</feature>-->
-                        
-
-
+                        <feature>karaf-feature</feature>
                     </bootFeatures>
                 </configuration>
             </plugin>
@@ -122,6 +119,7 @@
                             <descriptors>
                                 <descriptor>src/main/descriptors/bin.xml</descriptor>
                             </descriptors>
+                            <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
                 </executions>

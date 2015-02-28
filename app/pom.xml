@@ -26,13 +26,14 @@
         </dependency>
         <dependency>
             <groupId>com.samstercode.karafrecipes</groupId>
-            <artifactId>karaf-ui</artifactId>
-            <type>war</type>
+            <artifactId>karaf-rest-two</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
+            <groupId>com.samstercode.karafrecipes</groupId>
+            <artifactId>karaf-ui</artifactId>
+            <type>war</type>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
