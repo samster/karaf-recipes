@@ -23,6 +23,7 @@ import java.util.List;
 public class KarafRest {
 
     private static final transient Logger LOGGER = LoggerFactory.getLogger(KarafRest.class);
+
     private List<KarafSvc> karafSvcList;
     private List<KarafSvc> cachedKarafSvcList;
 
@@ -36,7 +37,7 @@ public class KarafRest {
         LOGGER.debug("Entering sayHelloWorld()");
         String returnString = "Unavailable";
         if (cachedKarafSvcList.isEmpty()) {
-            LOGGER.debug("Karaf service unavailable");
+            //LOGGER.debug("Karaf service unavailable");
         } else {
             returnString = cachedKarafSvcList.get(0).getHelloWorld();
         }
@@ -51,19 +52,19 @@ public class KarafRest {
     }
 
     public void bind(KarafSvc karafSvc) {
-        LOGGER.debug("entering bind()");
+        // LOGGER.debug("entering bind()");
         sortKarafSvcList();
     }
 
     public synchronized void unbind(KarafSvc karafSvc) {
-        LOGGER.debug("entering unbind()");
+        // LOGGER.debug("entering unbind()");
         if (cachedKarafSvcList != null) {
             cachedKarafSvcList.remove(karafSvc);
         }
     }
 
     public void setKarafSvcList(List<KarafSvc> karafSvcList) {
-        LOGGER.debug("entering setKarafSvcList()");
+        // LOGGER.debug("entering setKarafSvcList()");
         this.karafSvcList = karafSvcList;
         sortKarafSvcList();
     }

@@ -1,0 +1,23 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd">
+
+    <jaxrs:server id="resttwo" address="/resttwo">
+        <jaxrs:serviceBeans>
+            <ref component-id="restSvcTwo"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+
+    <bean id="restSvcTwo" class="com.samstercode.karafrecipes.rest.KarafRest">
+        <property name="karafSvcList" ref="karafSvcRefTwo"/>
+    </bean>
+
+    <reference-list id="karafSvcRefTwo" interface="com.samstercode.karafrecipes.svc.KarafSvc">
+        <reference-listener
+            ref="restSvcTwo"
+            bind-method="bind"
+            unbind-method="unbind"/>
+    </reference-list>
+
+</blueprint>

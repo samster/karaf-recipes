@@ -14,10 +14,13 @@
         <karaf.version>3.0.3</karaf.version>
         <cxf.version>3.0.2</cxf.version>
         <java.version>1.7</java.version>
+        <sl4j-api.version>1.7.7</sl4j-api.version>
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
         <maven.bundle.plugin.version>2.5.3</maven.bundle.plugin.version>
         <maven.resources.plugin.version>2.7</maven.resources.plugin.version>
         <lineman.maven.plugin.version>1.7</lineman.maven.plugin.version>
+        <maven.assembly.plugin.version>2.5.3</maven.assembly.plugin.version>
+        <json-simple.version>1.1.1</json-simple.version>
     </properties>
 
     <organization>
@@ -44,6 +47,11 @@
     </distributionManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -76,9 +84,31 @@
                 <type>xml</type>
             </dependency>
             <dependency>
+                <groupId>org.apache.cxf.karaf</groupId>
+                <artifactId>apache-cxf</artifactId>
+                <version>${cxf.version}</version>
+                <classifier>features</classifier>
+                <type>xml</type>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-rs-security-cors</artifactId>
                 <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${sl4j-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.json-simple</groupId>
+                <artifactId>json-simple</artifactId>
+                <version>${json-simple.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -106,6 +136,11 @@
                     <artifactId>lineman-maven-plugin</artifactId>
                     <version>${lineman.maven.plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven.assembly.plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -125,6 +160,7 @@
     <modules>
         <module>svc</module>
         <module>rest</module>
+        <module>rest-two</module>
         <module>ui</module>
         <module>feature</module>
         <module>app</module>

@@ -26,6 +26,7 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Export-Package>com.samstercode.karafrecipes.svc</Export-Package>
                         <Import-Package>
+                            org.slf4j
                         </Import-Package>
                     </instructions>
                 </configuration>

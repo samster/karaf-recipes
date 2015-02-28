@@ -10,9 +10,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>karaf-rest</artifactId>
+    <artifactId>karaf-rest-two</artifactId>
     <packaging>bundle</packaging>
-    <name>KARAF RECIPES :: REST</name>
+    <name>KARAF RECIPES :: REST TWO</name>
     <description>Karaf REST Service</description>
 
     <dependencies>

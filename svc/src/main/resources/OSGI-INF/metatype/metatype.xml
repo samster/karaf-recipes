@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0">
+
+    <OCD name="Karaf Service" id="com.samstercode.karafrecipes.svc.impl.KarafSvcImpl"
+         description="Karaf Service" >
+        <AD name="Message" id="message" required="true" type="String"
+            default="Hi There" description="The message to return"/>
+    </OCD>
+
+    <Designate pid="com.samstercode.karafrecipes.svc.impl.KarafSvcImpl">
+        <Object ocdref="com.samstercode.karafrecipes.svc.impl.KarafSvcImpl" />
+    </Designate>
+
+</metatype:MetaData>

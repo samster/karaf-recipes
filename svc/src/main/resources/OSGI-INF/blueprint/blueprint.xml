@@ -1,6 +1,10 @@
-<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0">
 
-    <bean id="karafSvcBean" class="com.samstercode.karafrecipes.svc.impl.KarafSvcImpl"/>
+    <bean id="karafSvcBean" class="com.samstercode.karafrecipes.svc.impl.KarafSvcImpl">
+        <cm:managed-properties persistent-id="com.samstercode.karafrecipes.svc.impl.KarafSvcImpl"
+                               update-strategy="component-managed" update-method="updateProperties" />
+        <property name="message" value="Hi There"/>
+    </bean>
 
     <service id="karafService" ref="karafSvcBean"
              interface="com.samstercode.karafrecipes.svc.KarafSvc"/>
