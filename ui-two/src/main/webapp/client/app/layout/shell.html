@@ -1,0 +1,71 @@
+<div ng-controller="ShellController as vm" layout="row">
+    <section layout="row" flex>
+
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+                    md-is-locked-open="true">
+
+            <md-toolbar>
+                <span class="md-toolbar-tools titleHeading"><a ui-sref="home" ng-click="vm.navigateTo('home')">MY APP</a></span>
+            </md-toolbar>
+
+            <md-content>
+                <md-list layout="column" style="padding-top:0px;padding-bottom:0px">
+                    <md-list-item class="navHeading md-accent md-hue-2">
+                        FEATURE ONE
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout="row">
+                        <md-button ng-class="{'navItem': true,'md-accent':vm.isActiveNavItem('featureOneScan')}" flex ng-click="vm.navigateTo('featureOneScan')">
+                            <md-icon md-svg-src="images/vendor/ic_file_upload_24px.svg"></md-icon>
+                            Scan
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </md-button>
+                    </md-list-item>
+                    <md-list-item layout="row">
+                        <md-button ng-class="{'navItem': true,'md-accent':vm.isActiveNavItem('featureOneSearch')}" flex ng-click="vm.navigateTo('featureOneSearch')">
+                            <md-icon md-svg-src="images/vendor/ic_search_24px.svg"></md-icon>
+                            Search
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </md-button>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item class="navHeading">
+                        FEATURE TWO
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item layout="row">
+                        <md-button ng-class="{'navItem': true,'md-accent':vm.isActiveNavItem('featureTwoLookup')}"  flex ng-click="vm.navigateTo('featureTwoLookup')">
+                            <md-icon md-svg-src="images/vendor/ic_file_upload_24px.svg"></md-icon>
+                            Lookup
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </md-button>
+                    </md-list-item>
+                    <md-list-item layout="row">
+                        <md-button ng-class="{'navItem': true,'md-accent':vm.isActiveNavItem('featureTwoSearch')}"  flex ng-click="vm.navigateTo('featureTwoSearch')">
+                            <md-icon md-svg-src="images/vendor/ic_search_24px.svg"></md-icon>
+                            Search
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </md-button>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+
+        </md-sidenav>
+
+        <div layout="column" tabIndex="-1" role="main" flex>
+            <md-toolbar>
+                <div class="md-toolbar-tools" ng-click="openMenu()" tabIndex="-1">
+                    <md-button class="md-icon-button" hide-gt-md aria-label="Toggle Menu">
+                        <md-icon md-svg-src="images/vendor/ic_menu_24px.svg"></md-icon>
+                    </md-button>
+                    <div layout="row" flex>
+                        Content
+                    </div>
+                </div>
+            </md-toolbar>
+            <div ui-view></div>
+        </div>
+
+    </section>
+
+</div>

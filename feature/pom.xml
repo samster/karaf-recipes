@@ -35,6 +35,12 @@
             <type>war</type>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.samstercode.karafrecipes</groupId>
+            <artifactId>karaf-ui-two</artifactId>
+            <type>war</type>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
